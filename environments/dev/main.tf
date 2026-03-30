@@ -1,0 +1,19 @@
+terraform {
+    required_providers {
+        azurerm = {
+            source = "hashicorp/azurerm"
+            version = "4.66.0"
+        }
+    }
+}
+
+provider "azurerm" {
+    resource_provider_registrations = "none"
+    features{}
+}
+
+module "networking" {
+    source = "../../modules/networking"
+    az_location = var.az_location
+    environment = var.environment
+}
